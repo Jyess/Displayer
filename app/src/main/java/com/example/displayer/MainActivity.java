@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,11 +41,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+        ImageView img = findViewById(R.id.img);
+        img.setVisibility(View.VISIBLE);
+
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-                Log.i(TAG, "OK");
+                img.setImageResource(R.drawable.yes);
+                Toast.makeText(getApplicationContext(), "Good choice", Toast.LENGTH_SHORT).show();
             } else {
-                Log.i(TAG, "KO");
+                img.setImageResource(R.drawable.no);
+                Toast.makeText(getApplicationContext(), "Nope", Toast.LENGTH_SHORT).show();
             }
         } else {
             Log.i(TAG, "what");
